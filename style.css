@@ -1,0 +1,262 @@
+
+*{
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    font-weight: 300;
+    font-size: 1.5rem;
+    background-color: #CCCCFF;
+    color: #630330;
+    /*Positioning how the lists and tasks will be displayed*/
+    display: grid;
+    /*Vertically and infront of eachother the 2 boxes*/
+    grid: "header header header header" auto "... lists active ..." auto /
+    1fr minmax(400px, 550px) minmax(300px, 500px);
+
+}
+
+/*The page's title design*/
+.title{
+    grid-area: header;
+    text-align: center;
+    font-size: calc(3.5vw + 1rem);
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.5);
+    letter-spacing: 1px;
+}
+
+/*"My Lists" positioneed to the right side*/
+.content{
+    grid-area: lists;
+    padding-right: 450px;
+}
+
+/*Formatting the "My Lists" content*/
+.tasks{
+    line-height: 1.7;
+    font-size: 1.4rem;
+    font-weight: 300;
+    list-style: circle;
+    padding-left: 1.1em;
+}
+
+/*"My Lists" displayment*/
+.list-name{
+    cursor: pointer;
+}
+
+.list-name:hover{
+    opacity: 0.7;
+}
+
+/*Fixing the position of +*/
+form{
+    display: flex;
+}
+
+/*Buttons formatting and displayemnet*/
+.btn{
+    cursor: pointer;
+    background: 0;
+    border: 0;
+    padding: 0;
+    color: inherit;
+    font-size: 1rem;
+}
+
+.btn.create{
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin-right: 0.25em;
+    transition: opacity 200ms ease-in;
+}
+
+.btn.btn.create:hover{
+    opacity: 0.7;
+}
+
+/*Adding new list and tasks formatting*/
+.new {
+    background: transparent;
+    border: 0;
+    color: inherit;
+                               /*or currentColor*/
+    border-bottom: 1px solid cornflowerblue;
+    font-size: inherit;
+
+    padding: 0.25em;
+
+    /*Getting rid of the black border box */
+    outline: none;
+    /*When you add a new list or task the bottom border's width will increase this is 
+    a transition to let the process be smooth*/
+    transition: border-bottom 150ms ease-in;
+    order: 2;
+}
+
+/*Incresaing the width of the bottom border when you add a new list or task*/
+.new:focus{
+    border-bottom-width: 3px;
+}
+
+/*When you add a new task or list the placeholder's color shall be paler*/
+.new:focus::placeholder{
+    opacity: 0.5;
+}
+
+.new.list{
+    font-size: 1.2rem;
+}
+
+.new.task{
+    margin-bottom: 0;
+}
+
+/*The active list font weight's will be increased*/
+.active-list{
+    font-weight: 700;
+}
+
+
+/*Custtoming the Lists Tasks*/
+.lists{
+    /*customming property*/
+    --spacer: 2rem;
+    grid-area: active;
+    background: rgb(51, 5, 51);
+    color: rgb(100, 108, 226);
+}
+
+/*Customming the Header of the task list*/
+.heading{
+    padding: var(--spacer);
+    background: #f0b3f8;
+    margin-right: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.list-title{
+    margin: 0 1em 0 0;
+
+}
+
+.counter{
+    margin: 0;
+    font-size: 1rem;
+}
+
+.contents{
+    padding: var(--spacer);
+    position: relative;
+}
+
+
+/*Anything that has a type of checkbox will be hidden*/
+[type="checkbox"]{
+    opacity: 0;
+    position: absolute;
+}
+
+.task label{
+    display: inline-flex;
+    align-items: center;
+    /*Fixing the the position of the line when the u check the checkbox*/
+    position: relative;
+}
+
+/*Positiong the contents of the task list*/
+.task{
+    position: relative;
+    margin-bottom: 1.25em;
+}
+
+.task::after{
+    /*Lines between the tasks*/
+    content: "";
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: -0.5em;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.1;
+}
+
+/*Customming the checkbox*/
+.custom-checkbox{
+    --size: 0.80em;
+    display: inline-block;
+    width: var(--size);
+    height: var(--size);
+    margin-right: var(--size);
+    cursor: pointer;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    transform: scale(1);
+    transition: transform 180ms ease-in-out;
+}
+
+.task:hover .custom-checkbox, [type="checkbox"]:focus + label .custom-checkbox {
+    transform: scale(1.2);
+    color: rgb(244, 220, 245);
+}
+
+[type="checkbox"]:checked + label .custom-checkbox{
+    background: #caa2ff;
+    border-color: #cba3ff;
+    box-shadow: inset 0 0 0px 1.5px ;
+}
+
+[type="checkbox"]:checked + label{
+    opacity: 0.5;
+}
+
+/*The line that appears after checking the checkbox*/
+.task label::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    left: 1em;
+    top: 50%;
+    height: 3px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 150ms ease-in-out;
+}
+
+[type="checkbox"]:checked + label::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/*Clearing lists and tasks buttons*/
+ .deleting{
+    display: flex;
+    justify-content: space-evenly;
+    position: absolute;
+    width: 100%;
+    right: 500px;
+    bottom: -35px;
+    color: #630330;
+}
+
+.btn.delete{
+    font-weight: 600;
+    letter-spacing: 1px;
+    opacity: 0.6;
+    font-size: 1rem;
+    transition: color 200ms;
+}
+
+.btn.delete:hover{
+    color: blueviolet;
+}
+
+

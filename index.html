@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!--Responsive-->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width", initial-scale="1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <!--Linking to the style sheet-->
+        <link rel="stylesheet" href="style.css">
+        <title>Your Tasks</title> 
+    </head>
+    <body>
+        <h1 class="title">Things need to be done</h1>
+        <div class="content">
+            <h2 class="list-title">My Lists</h2>
+            <ul class="tasks">
+                <li class="list-name active-list">Assignments</li>
+                <li class="list-name">Bills</li>
+                <li class="list-name">Groceries</li>
+            </ul>
+            <!--Creatting a new input for adding items to my lists-->
+            <form action="">
+                <input type="text" class="new list" placeholder="New List" aria-label="New List">
+                <button class="btn create" aria-label="create new list">+</button>
+            </form>
+        </div>
+        <div class="lists">
+            <div class="heading">
+                <h2 class="list-title">Assignments</h2>
+                <p class-tasl-count> 3 tasks remaining</p>
+            </div>
+            <div class="contents">
+                <div class="counter">
+
+                    <!--task 1-->
+                    <div class="task">
+                        <input type="checkbox" id="taski">
+                        <!--Labeling  task-1 so  when you click on the task itself it will actually check the box -->
+                        <label for="taski">
+                            <span class="custom-checkbox"></span>
+                            Recording
+                        </label>
+                    </div>
+
+                    <!--task 2-->
+                    <div class="task">
+                        <input type="checkbox" id="taskii">
+                        <!--Labeling task-2 so when you click on the task itself 
+                            it will actually check the box -->
+                        <label for="taskii">
+                            <span class="custom-checkbox"></span>
+                            Problem Sets
+                        </label>
+                    </div>
+
+                    <!--task 3-->
+                    <div class="task">
+                        <input type="checkbox" id="taskiii">
+                        <!--Labeling task-3 so  when you click on the task itself 
+                            it will actually check the box -->
+                        <label for="taskiii">
+                            <span class="custom-checkbox"></span>
+                            Labs
+                        </label>
+                    </div>
+                </div>
+
+                <!--Creating a new input for adding items to my tasks-->
+                <div class="new-tasks">
+                    <form action="">
+                        <input type="text" class="new task" placeholder="New task" aria-label="New task">
+                        <button class="btn create" aria-label="create new task">+</button>
+                    </form>
+                </div>
+                <!--Creatting buttons for deleting items to my tasks-->
+                <div class="deleting">
+                    <button class="btn delete">Clear List</button>
+                    <button class="btn delete">Clear Completed Tasks</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
